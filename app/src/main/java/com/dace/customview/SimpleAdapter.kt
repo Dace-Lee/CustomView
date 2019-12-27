@@ -15,17 +15,16 @@ class SimpleAdapter(private val context: Context, private val data: List<Menu>) 
         this.onItemClickListener = onItemClickListener
     }
 
-    override fun onCreateViewHolder(p0: ViewGroup, p1: Int): SimpleViewHolder =
-        SimpleViewHolder(LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, p0, false).also {
-            it.setOnClickListener { view ->
-                onItemClickListener?.onItemClick(view, p1)
-            }
-        })
+    override fun onCreateViewHolder(parent: ViewGroup, type: Int): SimpleViewHolder =
+        SimpleViewHolder(LayoutInflater.from(context).inflate(android.R.layout.simple_list_item_1, parent, false))
 
     override fun getItemCount(): Int = data.size
 
-    override fun onBindViewHolder(p0: SimpleViewHolder, p1: Int) {
-        p0.tvContent.text = data[p1].content
+    override fun onBindViewHolder(viewHolder: SimpleViewHolder, position: Int) {
+        viewHolder.tvContent.text = data[position].content
+        viewHolder.tvContent.setOnClickListener { view ->
+            onItemClickListener?.onItemClick(view, position)
+        }
     }
 
     inner class SimpleViewHolder(view: View) : RecyclerView.ViewHolder(view) {

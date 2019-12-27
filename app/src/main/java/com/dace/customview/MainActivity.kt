@@ -9,7 +9,8 @@ import android.view.View
 
 class MainActivity : AppCompatActivity() {
     private val content = arrayListOf(
-        Menu("小米视频Loading", "com.dace.customview.loading.MiLoadingActivity")
+        Menu("小米视频Loading", "com.dace.customview.loading.MiLoadingActivity"),
+        Menu("探探Item", "com.dace.customview.card.CardActivity")
     //more...
     )
 
